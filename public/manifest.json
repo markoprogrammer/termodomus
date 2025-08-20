@@ -1,0 +1,23 @@
+{
+  "name": "Termodomus - Toplotni Sistemi",
+  "short_name": "Termodomus",
+  "description": "Servis, prodaja i ugradnja toplotnih pumpi, gasnih kotlova, solarnih panela i održavanje industrijskih postrojenja",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#dc2626",
+  "icons": [
+    {
+      "src": "/logo-termodomus-logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/logo-termodomus-logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ],
+  "categories": ["business", "home", "utilities"],
+  "lang": "sr"
+}

@@ -2,9 +2,31 @@ import React from 'react';
 import { Thermometer, Phone, Mail, MapPin, Clock, ChevronRight, Flame, Star, Users, Award, Building2, Wrench, ArrowRight, Menu, X, Instagram } from 'lucide-react';
 import { useState } from 'react';
 import logoImage from './assets/logo-termodomus-logo.webp';
+import mainImage from './assets/main-image.jpg';
+import podnoGrejanje from './assets/podno-grejanje.jpg';
+import toplotnaPumpa from './assets/toplotna-pumpa.jpg';
+import gasniKotlovi from './assets/gasni-kotlovi.jpg';
+import kotlarnica from './assets/kotlarnica.jpg';
+import daikinVrv from './assets/Daikin-VRV-VRF.jpg';
+import centralniSistem from './assets/centralni-sistem-grejanja-hladjenja-daikin.JPG';
+import viessmann from './assets/viessmann.avif';
+import aristonLogo from './assets/ariston-logo.png';
+import boschLogo from './assets/bosh-logo.svg';
+import mitsubishiLogo from './assets/Mitsubishi-logo.png';
+import lgLogo from './assets/LG-Logo.webp';
+import daikinLogo from './assets/DAIKIN_logo.svg.png';
+import viessmannLogo from './assets/Viessmann-logo.svg.png';
+
+interface GalleryImage {
+  image: string;
+  title: string;
+  description: string;
+  category: string;
+}
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   return (
     <div className="min-h-screen bg-white">
@@ -13,6 +35,10 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-2 md:space-y-0">
             <div className="flex flex-col md:flex-row md:items-center md:space-x-6 space-y-2 md:space-y-0">
+              <a href="tel:0694999455" className="flex items-center gap-2 hover:text-gray-200">
+                <Phone size={16} />
+                <span>069 499 9455</span>
+              </a>
               <a href="tel:0694999454" className="flex items-center gap-2 hover:text-gray-200">
                 <Phone size={16} />
                 <span>069 499 9454</span>
@@ -29,23 +55,20 @@ function App() {
             <div className="flex flex-col md:flex-row md:items-center md:space-x-6 space-y-2 md:space-y-0">
               <div className="flex items-center gap-2">
                 <MapPin size={16} />
-                <span>Avalska 12, Kragujevac 34000</span>
+                <span>Atinska 1, Kragujevac 34000</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock size={16} />
-                <span>Otvoreno 24/7</span>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
 
       {/* Navigation */}
-      <nav className="bg-white shadow-lg sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
+      <nav className="bg-white shadow-lg md:static sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-0">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <img src={logoImage} alt="Termodomus Logo" className="h-10 w-auto" />
+              <img src={logoImage} alt="Termodomus Logo" className="h-16 md:h-32 w-auto" />
             </div>
             
             {/* Mobile menu button */}
@@ -82,18 +105,44 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home">
-        <div className="relative h-[600px] bg-cover bg-center" 
-             style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80")' }}>
-          <div className="absolute inset-0 bg-black bg-opacity-50">
-            <div className="container mx-auto px-4 h-full flex items-center">
-              <div className="max-w-2xl text-white">
-                <h1 className="text-3xl md:text-5xl font-bold mb-6">Temperatura Vašeg doma je naša briga</h1>
-                <p className="text-lg md:text-xl mb-8">Sa Vama od 2011</p>
-                <a href="#contact" className="bg-red-600 text-white px-6 md:px-8 py-3 rounded-lg flex items-center gap-2 hover:bg-red-700 transition-colors inline-flex w-fit">
+      <section id="home" className="py-3 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="space-y-8">
+              <h1 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight">
+                Servis, prodaja, ugradnja toplotnih pumpi, gasnih kotlova, solarnih panela i održavanje
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-600">
+                Sa Vama od 2011
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Mi smo Termodomus - vaš pouzdan partner za sve toplotne sisteme. Pružamo kompletnu uslugu od prodaje i ugradnje do servisa i održavanja.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="#contact" className="bg-red-600 text-white px-8 py-4 rounded-xl flex items-center gap-3 hover:bg-red-700 transition-all duration-300 inline-flex w-fit shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg">
                   Kontaktirajte nas
-                  <ChevronRight size={20} />
+                  <ChevronRight size={24} />
                 </a>
+                <a href="#about" className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl flex items-center gap-3 hover:border-red-600 hover:text-red-600 transition-all duration-300 inline-flex w-fit font-semibold text-lg">
+                  Saznajte više
+                  <ArrowRight size={24} />
+                </a>
+              </div>
+            </div>
+            
+            {/* Image */}
+            <div className="relative">
+              <img 
+                src={mainImage} 
+                alt="Termodomus - Toplotni sistemi" 
+                className="w-full h-auto rounded-2xl shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -right-6 bg-red-600 text-white p-6 rounded-2xl shadow-xl">
+                <div className="text-center">
+                  <div className="text-3xl font-bold">12+</div>
+                  <div className="text-sm">Godina iskustva</div>
+                </div>
               </div>
             </div>
           </div>
@@ -106,16 +155,15 @@ function App() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">Ko smo mi?</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Mi smo Termodomus - tim stručnjaka za instalaciju i servisiranje termalnih gasnih kotlova i električnih instalacija, 
-              kao što su Ariston, Bosch i drugi poznati proizvođači. Naš cilj je pružiti kvalitetne usluge i pouzdane proizvode za vaš dom.
+              Mi smo Termodomus - tim stručnjaka za instalaciju i servisiranje gasnih kotlova, toplotnih pumpi, solarnih panela i kompletnih sistema HVAC (Heating, Ventilation, and Air Conditioning).
+              Ovlašćeni partneri smo sa proizvodjačima kao što su Ariston, Bosch, Mitsubishi, LG, Daikin i Viessmann. Naš cilj je pružiti kvalitetne usluge i pouzdane proizvode za vaš dom.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
               { icon: <Wrench className="h-8 md:h-12 w-8 md:w-12" />, number: "11560+", text: "Uradjenih servisa" },
               { icon: <Thermometer className="h-8 md:h-12 w-8 md:w-12" />, number: "100+", text: "Toplotnih pumpi" },
-              { icon: <Flame className="h-8 md:h-12 w-8 md:w-12" />, number: "4500+", text: "Kotlova na gas i pelet" },
-              { icon: <Users className="h-8 md:h-12 w-8 md:w-12" />, number: "220+", text: "Zadovoljnih domaćinstava" }
+              { icon: <Flame className="h-8 md:h-12 w-8 md:w-12" />, number: "4500+", text: "Kotlova na gas" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-red-600 mb-4 flex justify-center">{stat.icon}</div>
@@ -140,13 +188,13 @@ function App() {
               },
               {
                 icon: <Flame className="h-12 w-12 text-red-600" />,
-                title: "Gasni kotlovi i kotlovi na pelet",
-                description: "Stručna instalacija i servis gasnih kotlova i kotlova na pelet."
+                title: "Gasni kotlovi",
+                description: "Stručna instalacija i servis gasnih kotlova."
               },
               {
                 icon: <Star className="h-12 w-12 text-red-600" />,
                 title: "Solarni paneli",
-                description: "Ugradnja i održavanje solarnih panela za energetski efikasno rešenje."
+                description: "Ugradnja i održavanje solarnih panela sa pratećom dokumentacijom."
               }
             ].map((service, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
@@ -159,40 +207,67 @@ function App() {
         </div>
       </section>
 
-      {/* Products Section */}
-      <section id="products" className="py-20 bg-white">
+      {/* Gallery Section */}
+      <section id="gallery" className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Naši Proizvodi</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-3xl font-bold text-center mb-12">Galerija</h2>
+          <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            Od ugradnje toplotnih pumpi, gasnih kotlova, solarnih panela i održavanja industrijskih postrojenja
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                image: "https://images.unsplash.com/photo-1513086670993-297187d3a281?auto=format&fit=crop&q=80",
-                title: "Gasni Kotlovi",
-                description: "Vrhunski gasni kotlovi renomiranih proizvođača"
+                image: toplotnaPumpa,
+                title: "Ugradnja toplotne pumpe",
+                description: "Ugradnja toplotnih pumpi najnovije generacije sa svim dodatnim uređajima i kontrolnim jedinicama.",
+                category: "Toplotne pumpe"
               },
               {
-                image: "https://images.unsplash.com/photo-1510916369457-5b6ebd11d6b4?auto=format&fit=crop&q=80",
-                title: "Radijatori",
-                description: "Širok izbor radijatora za svaki prostor"
+                image: podnoGrejanje,
+                title: "Instalacija podnog grejanja",
+                description: "Instalacija niskotemperaturnog podnog i zidnog grejanja sa materijalima renomiranih proizvođača.",
+                category: "Podno grejanje"
               },
               {
-                image: "https://images.unsplash.com/photo-1527089001920-e56b7c6c479b?auto=format&fit=crop&q=80",
-                title: "Klima Uređaji",
-                description: "Moderni klima uređaji za hlađenje i grejanje"
+                image: gasniKotlovi,
+                title: "Ovlašćeni servis gasnih kotlova",
+                description: "Puštanje u rad, produženje garancije, popravka i održavanje gasnih kotlova.",
+                category: "Gasni kotlovi"
+              },
+              {
+                image: kotlarnica,
+                title: "Izrada kotlarnice",
+                description: "Kompletno projektovanje, izrada i održavanje kotlarnice sa najnovijom tehnologijom.",
+                category: "Industrija"
+              },
+              {
+                image: centralniSistem,
+                title: "Centralni sistemi grejanja i hlađenja",
+                description: "Projektovanje, izrada i održavanje instalacija za grejanje, hladjenje i ventilaciju.",
+                category: "HVAC sistemi"
+              },
+              {
+                image: viessmann,
+                title: "Solarni paneli",
+                description: "Izrada solarnih panela sa pratećom dokumentacijom.",
+                category: "Solarni paneli"
               }
-            ].map((product, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-lg shadow-lg">
+            ].map((work, index) => (
+              <div 
+                key={index} 
+                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setSelectedImage(work)}
+              >
                 <img 
-                  src={product.image} 
-                  alt={product.title}
-                  className="w-full h-64 object-cover transition-transform group-hover:scale-105"
+                  src={work.image} 
+                  alt={work.title} 
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/0 p-6 flex flex-col justify-end">
-                  <h3 className="text-xl font-semibold text-white mb-2">{product.title}</h3>
-                  <p className="text-gray-200">{product.description}</p>
-                  <a href="#contact" className="mt-4 inline-flex items-center text-white hover:text-red-400">
-                    Saznaj više <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 className="text-lg font-semibold mb-1">{work.title}</h3>
+                    <span className="text-sm text-red-300">{work.category}</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -200,40 +275,27 @@ function App() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Partners Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Šta Kažu Naši Klijenti</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-3xl font-bold text-center mb-12">Naši Partneri</h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
             {[
-              {
-                name: "Marko Petrović",
-                role: "Vlasnik stana",
-                text: "Izuzetno profesionalna usluga. Sve je urađeno u roku i po dogovoru."
-              },
-              {
-                name: "Ana Jovanović",
-                role: "Menadžer zgrade",
-                text: "Već godinama sarađujemo sa Termodomusom. Uvek su pouzdani i efikasni."
-              },
-              {
-                name: "Stefan Nikolić",
-                role: "Arhitekta",
-                text: "Odlična saradnja na više projekata. Preporučujem njihove usluge."
-              }
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-                <div className="flex items-center mb-4">
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                  <Star className="h-5 w-5 text-yellow-400" />
-                </div>
-                <p className="text-gray-600 mb-4">{testimonial.text}</p>
-                <div>
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
+              { name: "Ariston", logo: aristonLogo },
+              { name: "Bosch", logo: boschLogo },
+              { name: "Mitsubishi", logo: mitsubishiLogo },
+              { name: "LG", logo: lgLogo },
+              { name: "Daikin", logo: daikinLogo },
+              { name: "Viessmann", logo: viessmannLogo }
+            ].map((partner, index) => (
+              <div key={index} className="text-center">
+                <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                                       <img
+                       src={partner.logo}
+                       alt={`${partner.name} logo`}
+                       className="h-16 w-auto mx-auto transition-all duration-300"
+                     />
+                  <p className="text-sm text-gray-600 mt-2 font-medium">{partner.name}</p>
                 </div>
               </div>
             ))}
@@ -249,7 +311,11 @@ function App() {
             <div className="space-y-6">
               <div className="flex items-center justify-center gap-3">
                 <MapPin className="h-6 w-6 text-red-600" />
-                <span className="text-lg">Avalska 12, Kragujevac 34000</span>
+                <span className="text-lg">Atinska 1, Kragujevac 34000</span>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <Phone className="h-6 w-6 text-red-600" />
+                <a href="tel:0694999455" className="text-lg hover:text-red-600">069 499 9455</a>
               </div>
               <div className="flex items-center justify-center gap-3">
                 <Phone className="h-6 w-6 text-red-600" />
@@ -263,10 +329,7 @@ function App() {
                 <Instagram className="h-6 w-6 text-red-600" />
                 <a href="https://www.instagram.com/termodomus/" target="_blank" rel="noopener noreferrer" className="text-lg hover:text-red-600">@termodomus</a>
               </div>
-              <div className="flex items-center justify-center gap-3">
-                <Clock className="h-6 w-6 text-red-600" />
-                <span className="text-lg">Otvoreno 24/7</span>
-              </div>
+
             </div>
           </div>
         </div>
@@ -278,7 +341,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <img src={logoImage} alt="Termodomus Logo" className="h-10 w-auto" />
+                <img src={logoImage} alt="Termodomus Logo" className="h-14 w-auto" />
               </div>
               <p className="text-gray-400">
                 Termodomus Servis - Vaš pouzdani partner za grejanje i hlađenje. Sa Vama od 2011.
@@ -307,6 +370,10 @@ function App() {
               <ul className="space-y-2">
                 <li className="flex items-center gap-2 text-gray-400">
                   <Phone size={16} />
+                  <a href="tel:0694999455" className="hover:text-white">069 499 9455</a>
+                </li>
+                <li className="flex items-center gap-2 text-gray-400">
+                  <Phone size={16} />
                   <a href="tel:0694999454" className="hover:text-white">069 499 9454</a>
                 </li>
                 <li className="flex items-center gap-2 text-gray-400">
@@ -319,7 +386,7 @@ function App() {
                 </li>
                 <li className="flex items-center gap-2 text-gray-400">
                   <MapPin size={16} />
-                  <span>Avalska 12, Kragujevac 34000</span>
+                  <span>Atinska 1, Kragujevac 34000</span>
                 </li>
               </ul>
             </div>
@@ -329,6 +396,36 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
+          <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden">
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors"
+            >
+              <X size={24} className="text-gray-700" />
+            </button>
+            <div className="flex flex-col lg:flex-row">
+              <div className="lg:w-2/3">
+                <img
+                  src={selectedImage.image}
+                  alt={selectedImage.title}
+                  className="w-full h-auto max-h-96 lg:max-h-full object-cover"
+                />
+              </div>
+              <div className="lg:w-1/3 p-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedImage.title}</h3>
+                <p className="text-gray-600 mb-4">{selectedImage.description}</p>
+                <div className="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                  {selectedImage.category}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

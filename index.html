@@ -22,14 +22,14 @@
     <meta property="og:url" content="https://termodomus.rs/" />
     <meta property="og:title" content="Termodomus - Toplotni Sistemi | Servis, Prodaja, Ugradnja" />
     <meta property="og:description" content="Termodomus - vaš pouzdan partner za toplotne sisteme. Servis, prodaja i ugradnja toplotnih pumpi, gasnih kotlova, solarnih panela i održavanje industrijskih postrojenja." />
-    <meta property="og:image" content="/logo-termodomus-logo.webp" />
+    <meta property="og:image" content="https://termodomus.rs/logo-termodomus-logo.webp" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://termodomus.rs/" />
     <meta property="twitter:title" content="Termodomus - Toplotni Sistemi | Servis, Prodaja, Ugradnja" />
     <meta property="twitter:description" content="Termodomus - vaš pouzdan partner za toplotne sisteme. Servis, prodaja i ugradnja toplotnih pumpi, gasnih kotlova, solarnih panela i održavanje industrijskih postrojenja." />
-    <meta property="twitter:image" content="/logo-termodomus-logo.webp" />
+    <meta property="twitter:image" content="https://termodomus.rs/logo-termodomus-logo.webp" />
     
     <!-- Additional SEO -->
     <meta name="language" content="Serbian" />
@@ -51,12 +51,13 @@
     <meta name="msapplication-TileColor" content="#dc2626" />
     <meta name="msapplication-TileImage" content="/logo-termodomus-logo.webp" />
     
-    <!-- Preconnect to external domains for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <body>
-    <div id="root"></div>
+    <!-- Structured data: only what the page itself states (name, address, phones, mail, Instagram, "od 2011") -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HVACBusiness", "@id": "https://termodomus.rs/#business", "name": "Termodomus", "url": "https://termodomus.rs/", "description": "Servis, prodaja i ugradnja toplotnih pumpi, gasnih kotlova i solarnih panela. Sa Vama od 2011.", "image": "https://termodomus.rs/logo-termodomus-logo.webp", "logo": "https://termodomus.rs/logo-termodomus-logo.webp", "telephone": ["+381694999455", "+381694999454"], "email": "termodomus.servis@gmail.com", "foundingDate": "2011", "address": {"@type": "PostalAddress", "streetAddress": "Atinska 1", "addressLocality": "Kragujevac", "postalCode": "34000", "addressCountry": "RS"}, "areaServed": "Kragujevac", "sameAs": ["https://www.instagram.com/termodomus/"]}</script>
+  </head>
+  <body>
+    <!-- Filled with the page's real HTML at build time (scripts/prerender.mjs), so search engines and AI crawlers
+         read the content without running JavaScript; React then takes it over in the browser. -->
+    <div id="root"><!--app--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
